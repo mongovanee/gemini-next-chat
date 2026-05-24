@@ -812,7 +812,8 @@ export default function Home() {
 
   const handleKeyDown = useCallback(
     (ev: KeyboardEvent<HTMLTextAreaElement>) => {
-      if (ev.key === 'Enter' && ev.shiftKey && !isRecording) {
+      if (ev.key === 'Enter' && !ev.nativeEvent.isComposing && !isRecording) {
+     // if (ev.key === 'Enter' && ev.shiftKey && !isRecording) {
         if (!checkAccessStatus()) return false
         // Prevent the default carriage return and line feed behavior
         ev.preventDefault()
