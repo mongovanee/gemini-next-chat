@@ -321,7 +321,11 @@ function MessageItem(props: Props) {
                 </Accordion>
               ) : null}
               <div ref={contentRef}>
-                {id === 'preview' ? <div className="whitespace-pre-wrap break-words">{html}</div> : <Magicdown>{html}</Magicdown>}
+                {role === 'user' || id === 'preview' ? (
+                  <div className="whitespace-pre-wrap break-words">{html}</div>
+                ) : (
+                  <Magicdown>{html}</Magicdown>
+                )}
               </div>
               {groundingMetadata ? (
                 <>
